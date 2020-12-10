@@ -11,15 +11,39 @@ public class bai1_OanTuXi {
 		int luaChonNguoi;
 		int diemNguoi =0 ;
 		int diemMay = 0;
+		int soLanChoi = 0;
 		boolean continueFlag = true;
 		
 		do {
 			luaChonMay = hamLuaChonMay();
 			luaChonNguoi = hamLuaChonNguoi(scan);
+			soLanChoi++;
 			if (luaChonNguoi == 0) {
+				System.out.println("Ban da thoat ra khoi game Oan Tu Xi");
 				continueFlag = false;
 			} else {
-			hamOanTuXi(luaChonNguoi, luaChonMay,diemNguoi, diemMay);
+				if (luaChonMay == 1 && luaChonNguoi == 2) {
+					diemNguoi++;
+					System.out.println("Nguoi thang");
+				} else if (luaChonMay == 1 && luaChonNguoi == 3) {
+					diemMay++;
+					System.out.println("May thang");
+				} else if (luaChonMay == 2 && luaChonNguoi == 1) {
+					diemMay++;
+					System.out.println("May thang");
+				} else if (luaChonMay == 2 && luaChonNguoi == 3) {
+					diemNguoi++;
+					System.out.println("Nguoi thang");
+				} else if (luaChonMay == 3 && luaChonNguoi == 1) {
+					diemNguoi++;
+					System.out.println("Nguoi thang");
+				} else if (luaChonMay == 3 && luaChonNguoi == 2) {
+					diemMay++;
+					System.out.println("May thang");
+				} else {
+					System.out.println("Hoa");
+				}
+			hamOanTuXi(luaChonNguoi, luaChonMay,diemNguoi, diemMay, soLanChoi);
 			}
 		} while (continueFlag);
 
@@ -43,37 +67,15 @@ public class bai1_OanTuXi {
 		return luaChonMay;
 	}
 
-	public static void hamOanTuXi(int luaChonNguoi, int luaChonMay, int diemNguoi, int diemMay) {
-
-		if (luaChonMay == 1 && luaChonNguoi == 2) {
-			diemNguoi++;
-			System.out.println("Nguoi thang");
-		} else if (luaChonMay == 1 && luaChonNguoi == 3) {
-			diemMay++;
-			System.out.println("May thang");
-		} else if (luaChonMay == 2 && luaChonNguoi == 1) {
-			diemMay++;
-			System.out.println("May thang");
-		} else if (luaChonMay == 2 && luaChonNguoi == 3) {
-			diemNguoi++;
-			System.out.println("Nguoi thang");
-		} else if (luaChonMay == 3 && luaChonNguoi == 1) {
-			diemNguoi++;
-			System.out.println("Nguoi thang");
-		} else if (luaChonMay == 3 && luaChonNguoi == 2) {
-			diemMay++;
-			System.out.println("May thang");
-		} else {
-			System.out.println("Hoa");
-		}
+	public static void hamOanTuXi(int luaChonNguoi, int luaChonMay, int diemNguoi, int diemMay, int soLanChoi) {
 
 		if (diemMay > diemNguoi) {
-			System.out.println("May da thang ban!");
+			System.out.println("May da thang ban sau " + soLanChoi + " so lan choi");
 			System.out.println("So lan may thang " + diemMay);
 			System.out.println("So lan nguoi thang " + diemNguoi);
 
 		} else if (diemMay < diemNguoi) {
-			System.out.println("Chuc mung chien thang. Ban da thang may");
+			System.out.println("Chuc mung chien thang. Ban da thang may sau " + soLanChoi + " so lan choi");
 			System.out.println("So lan nguoi thang " + diemNguoi);
 			System.out.println("So lan may thang " + diemMay);
 		} else {
